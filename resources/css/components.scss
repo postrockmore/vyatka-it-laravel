@@ -1,0 +1,160 @@
+@layer components {
+  .container {
+    @apply
+    w-full max-w-container
+    px-4 mx-auto;
+
+    @media screen and (max-width: calc(80rem + (1rem * 2))) {
+      @apply max-w-full;
+    }
+  }
+
+  // Text
+  .text-stroke {
+    @apply text-link;
+
+    @supports (-webkit-text-stroke: 0.125rem $accent) {
+      color: transparent;
+      -webkit-text-stroke: 0.125rem $accent
+    }
+  }
+
+  // Titles
+  .title {
+    @apply font-gilroy font-bold text-4xl text-main;
+
+    &-h2 {
+      @apply text-3xl;
+    }
+
+    @media screen and (min-width: 1024px) {
+      @apply text-6xl;
+
+      &-h2 {
+        @apply text-5xl;
+      }
+    }
+  }
+
+  // Togglers
+  .toggler {
+    @apply text-main relative;
+
+    &.active {
+      @apply text-link;
+    }
+
+    &-dark {
+      @apply text-body;
+
+      &.active {
+        @apply text-main
+      }
+    }
+  }
+
+  .toggler-with-element {
+    &::before {
+      content: '';
+
+      @apply absolute bottom-0 left-0 w-full h-0.5 bg-main opacity-0;
+    }
+
+    &.active {
+      &::before {
+        @apply opacity-100;
+      }
+    }
+  }
+
+  .header-link,
+  .footer-link {
+    @apply relative;
+  }
+
+  .header-link-label,
+  .footer-link-label {
+    @apply absolute -top-1 right-0 text-xxs py-0.5 px-1 bg-button-accent text-main-dark rounded translate-x-1/2;
+  }
+
+  .custom-underline {
+    @apply relative before:absolute before:bottom-0 before:left-0 before:w-full before:h-px;
+
+    &.text-link {
+      @apply before:bg-border-link;
+    }
+  }
+
+  // Article
+  .textbox {
+    &-img-rounded {
+      img {
+        @apply rounded-xl;
+      }
+    }
+
+    & > *:first-child {
+      @apply mt-0
+    }
+
+    h2, h3, h4, h5 {
+      @apply font-gilroy font-black mt-5;
+    }
+    h2 {
+      @apply text-6xl;
+    }
+
+    h3 {
+      @apply text-4xl;
+    }
+
+    h4 {
+      @apply text-2xl;
+    }
+
+    h5 {
+      @apply text-xl;
+    }
+
+    p {
+      @apply text-main mt-2;
+    }
+
+    a {
+      @apply text-link hover:text-link-hover hover:underline transition-all;
+    }
+
+    ul, ol {
+      @apply mt-4 flex flex-col gap-2;
+
+      & > li {
+        @apply relative flex flex-col items-start pl-3;
+
+        & > *:first-child {
+          @apply mt-0;
+        }
+
+        &::before {
+          content: '';
+          @apply absolute top-3 left-0 w-1.5 h-1.5 rounded-full bg-main;
+        }
+      }
+    }
+
+    img {
+      @apply mt-4 max-w-full object-contain;
+    }
+
+    q {
+      @apply flex flex-col gap-6 p-6 rounded-xl bg-bg-second mt-6;
+
+      & > * {
+        @apply m-0
+      }
+
+      &::before, &::after {
+        display: none;
+      }
+    }
+  }
+}

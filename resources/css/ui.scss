@@ -1,0 +1,64 @@
+@layer components {
+  // Buttons
+  .btn {
+    @apply py-4 px-4 flex items-center justify-center gap-2.5 rounded-xl transition-all;
+
+    &--accent-smooth {
+      @apply py-3 px-4 bg-button-accent-smooth-dark text-link hover:bg-button-accent-hover hover:text-main-dark active:bg-button-accent-pressed;
+    }
+
+    &--accent {
+      @apply bg-button-accent text-main-dark hover:bg-button-accent-hover active:bg-button-accent-pressed;
+    }
+
+    &--second {
+      @apply bg-button-second-dark text-main-dark hover:bg-button-second-dark-hover active:bg-button-second-dark-pressed;
+    }
+
+    &--light {
+      @apply text-link border border-border-light;
+    }
+
+    @media (min-width: 768px) {
+      @apply py-4 px-6;
+    }
+  }
+
+  // Radio
+  .radio {
+    &-variation-1 {
+      label {
+        @apply flex py-1 px-3 rounded-full text-main-dark cursor-pointer shadow-inset shadow-border-controls-dark;
+      }
+
+      input[type=radio]:checked + label {
+        @apply shadow-inset-xl shadow-button-accent;
+      }
+    }
+  }
+
+  // Input
+  .input-text {
+    @apply relative w-full;
+
+    input {
+      @apply w-full bg-transparent border-b border-border-controls-dark pt-6 pb-4 outline-none text-main-dark;
+    }
+
+    label {
+      @apply text-body-dark absolute top-6 left-0 transition-all;
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+      @apply top-0 text-xs
+    }
+  }
+
+  .overflow-x-auto {
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+}

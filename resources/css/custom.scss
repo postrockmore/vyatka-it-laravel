@@ -1,0 +1,125 @@
+[x-cloak] {
+  display: none !important;
+}
+
+// Header
+.header {
+  top: calc(var(--header_top_height) * -1);
+}
+
+.header-white {
+  @apply bg-main-dark text-caption;
+
+  .header-link-label {
+    @apply text-bg-main;
+  }
+
+  [data-header-top] {
+    @apply bg-bg-second;
+  }
+
+  .border-y {
+    @apply border-t-0;
+  }
+
+  .border-border-main-dark {
+    @apply border-border-main;
+  }
+
+  .text-main-dark {
+    @apply text-main;
+  }
+
+  .fill-caption-dark {
+    @apply fill-main;
+  }
+
+  .text-main-dark {
+    @apply text-main;
+
+    svg {
+      @apply fill-main;
+    }
+  }
+}
+
+// Achievements
+.achievement-card {
+  @apply relative;
+  height: var(--achievements_card_front_height);
+  background-color: transparent;
+  perspective: 1000px;
+
+  &-inner {
+    @apply relative w-full h-full;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  &-front {
+    @apply absolute top-0 left-0 w-full h-auto min-h-full;
+  }
+
+  &-back {
+    @apply absolute w-full h-full bg-main-dark;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+  }
+
+  &:hover {
+    .achievement-card-inner {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+// Reviews
+.reviews-gradient {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 78.12%, #FFFFFF 100%);
+}
+
+// Hover Element
+[data-hover-element] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: 1;
+
+  .hover-element {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--bg);
+    border-radius: 100px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &:hover {
+
+    &[data-hover-element-with-border] {
+      background: none !important;
+      box-shadow: inset 0px 0px 0px 2px var(--bg);
+    }
+
+    .hover-element {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  border: none;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px
+}

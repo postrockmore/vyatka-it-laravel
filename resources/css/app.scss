@@ -1,0 +1,18 @@
+// Libs
+@import './libs';
+
+// Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Custom
+@import './mixins';
+@import './fonts';
+@import './vars';
+@import './components';
+@import './ui';
+@import './override';
+@import './custom';
+@import './animation';
+

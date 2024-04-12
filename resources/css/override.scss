@@ -1,0 +1,40 @@
+$mobile_coef: 2;
+
+// Spacing
+.py-section {
+  @media screen and (max-width: 1024px) {
+    padding-top: calc(3.75rem / $mobile_coef);
+    padding-bottom: calc(3.75rem / $mobile_coef);
+  }
+}
+
+.pt-section {
+  @media screen and (max-width: 1024px) {
+    padding-top: calc(3.75rem / $mobile_coef);
+  }
+}
+
+.pb-section {
+  @media screen and (max-width: 1024px) {
+    padding-bottom: calc(3.75rem / $mobile_coef);
+  }
+}
+
+.my-section {
+  @media screen and (max-width: 1024px) {
+    margin-top: calc(3.75rem / $mobile_coef);
+    margin-bottom: calc(3.75rem / $mobile_coef);
+  }
+}
+
+.mt-section {
+  @media screen and (max-width: 1024px) {
+    margin-top: calc(3.75rem / $mobile_coef);
+  }
+}
+
+.mb-section {
+  @media screen and (max-width: 1280px) {
+    margin-bottom: calc(3.75rem / $mobile_coef);
+  }
+}
