@@ -123,3 +123,7 @@
   white-space: nowrap;
   width: 1px
 }
+
+.project-textbox .attachment__caption {
+    @apply hidden;
+}

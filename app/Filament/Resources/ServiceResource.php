@@ -7,6 +7,7 @@ use App\Filament\Resources\ServiceResource\RelationManagers;
 use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,6 +24,8 @@ class ServiceResource extends Resource
     protected static ?string $label = 'Услуга';
     protected static ?string $navigationLabel = 'Услуги';
     protected static ?string $pluralLabel = 'Услуги';
+    protected static ?string $navigationGroup = 'Услуги';
+    protected static ?int $navigationSort = 100;
 
     public static function form(Form $form): Form
     {
@@ -40,9 +43,14 @@ class ServiceResource extends Resource
                         Forms\Components\MarkdownEditor::make('content')
                             ->label('Описание'),
                     ])->columnSpan(2),
-                    Section::make()->schema([
-                        Forms\Components\Toggle::make('published')
-                            ->label('Опубликовано'),
+                    Forms\Components\Group::make()->schema([
+                        Section::make()->schema([
+                            Forms\Components\Toggle::make('published')
+                                ->label('Опубликовано'),
+                            TextInput::make('order')
+                                ->numeric()
+                                ->label('Порядок'),
+                        ]),
                         Forms\Components\FileUpload::make('thumbnail')
                             ->label('Изображение')
                     ])->columnSpan(1)
@@ -74,7 +82,9 @@ class ServiceResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('order')
+            ->reorderable('order');;
     }
 
     public static function getRelations(): array

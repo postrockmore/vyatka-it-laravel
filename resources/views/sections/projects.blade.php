@@ -14,7 +14,7 @@
 
                 <div class="grid grid-cols-1/1 tablet:grid-cols-2 desktop:grid-cols-3 gap-5 desktop:gap-8 mt-6 desktop:mt-14">
                     @foreach($projects as $project)
-                        <x-project-card :title="$project['title']" :thumbnail="$project['image']"></x-project-card>
+                        <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
                     @endforeach
                 </div>
 

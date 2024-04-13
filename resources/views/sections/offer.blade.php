@@ -9,7 +9,7 @@
             <p class="mt-6 desktop:mt-8 text-main-dark">{!! __('offer.description') !!}</p>
             <div class="flex items-stretch desktop:items-center flex-col desktop:flex-row gap-4 mt-6 desktop:mt-12">
                 <button class="btn btn--accent">{{ __('offer.action_button') }}</button>
-                <button class="btn btn--second">{{ __('offer.consultation_button') }}</button>
+                <button class="btn btn--second-dark">{{ __('offer.consultation_button') }}</button>
             </div>
         </div>
     </div>

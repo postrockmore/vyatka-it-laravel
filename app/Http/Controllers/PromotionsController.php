@@ -11,7 +11,7 @@ class PromotionsController extends Controller
 {
     public function index (): View
     {
-        $promotions = Cache::remember('promotions', 3600, function () {
+        $promotions = cache()->rememberForever('promotions', function () {
             return Promotion::query()->get();
         });
 

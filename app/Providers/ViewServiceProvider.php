@@ -40,11 +40,11 @@ class ViewServiceProvider extends ServiceProvider
             ClientsComposer::class
         );
 
-
         View::composer(
             ['sections.projects'],
             ProjectsComposer::class
         );
+
         Vite::macro('image', fn($asset) =>
             $this->asset("resources/images/$asset")
         );

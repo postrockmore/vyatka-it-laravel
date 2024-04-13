@@ -11,30 +11,34 @@
 
                     <div class="flex flex-col mt-4">
                         <div class="flex items-center gap-6 overflow-x-auto text-nowrap">
-                            <a href="#" class="toggler active">Все</a>
-                            <a href="#" class="toggler">Интернет-магазины</a>
-                            <a href="#" class="toggler">Сайты</a>
-                            <a href="#" class="toggler">Приложения</a>
-                            <a href="#" class="toggler">Интеграции</a>
-                        </div>
+                            <a href="{{ route('projects') }}" class="toggler {{ !isset($current_category) ? 'active' : '' }}">Все</a>
 
-                        <div class="grid grid-cols-1/1 tablet:grid-cols-2 desktop:grid-cols-6 gap-5 desktop:gap-8 mt-6 desktop:mt-14">
-                            @foreach($projects as $project)
-                                @if(in_array($loop->iteration, [1, 2]))
-                                    <div class="desktop:col-span-3">
-                                        <x-project-card :title="$project['title']" :thumbnail="$project['image']"></x-project-card>
-                                    </div>
-                                @else
-                                    <div class="desktop:col-span-2">
-                                        <x-project-card :title="$project['title']" :thumbnail="$project['image']"></x-project-card>
-                                    </div>
-                                @endif
+                            @foreach($categories as $category)
+                                <a href="{{ route('projects.category', $category) }}" class="toggler {{ isset($current_category) && $current_category->slug == $category->slug ? 'active' : '' }}">{{ $category->title }}</a>
                             @endforeach
                         </div>
 
-                        <div class="flex items-center justify-between">
+                        @if ($projects->isNotEmpty())
+                            <div class="grid grid-cols-1/1 tablet:grid-cols-2 desktop:grid-cols-6 gap-5 desktop:gap-8 mt-6 desktop:mt-14">
+                                @foreach($projects as $project)
+                                    @if(in_array($loop->iteration, [1, 2]))
+                                        <div class="desktop:col-span-3">
+                                            <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
+                                        </div>
+                                    @else
+                                        <div class="desktop:col-span-2">
+                                            <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
 
-                        </div>
+                            <div class="flex items-center justify-between">
+
+                            </div>
+                        @else
+                            <p class="desktop:mt-14">Данный раздел пуст</p>
+                        @endif
                     </div>
                 </div>
             </div>

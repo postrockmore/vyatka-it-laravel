@@ -41,9 +41,14 @@ class ClientResource extends Resource
                         TextInput::make('title')
                             ->label('Название'),
                     ])->columnSpan(2),
-                    Section::make()->schema([
-                        Toggle::make('published')
-                            ->label('Опубликован'),
+                    Forms\Components\Group::make()->schema([
+                        Section::make()->schema([
+                            Toggle::make('published')
+                                ->label('Опубликован'),
+                            TextInput::make('order')
+                                ->numeric()
+                                ->label('Порядок'),
+                        ]),
                         FileUpload::make('thumbnail')
                             ->label('Изображение')
                             ->image(),
@@ -73,7 +78,9 @@ class ClientResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('order')
+            ->reorderable('order');;
     }
 
     public static function getRelations(): array

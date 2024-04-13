@@ -10,5 +10,11 @@
     "offer.consultation_button": "Бесплатная консультация",
 
     "promotions.title": "Акции",
-    "projects.title": "Портфолио"
+    "projects.title": "Портфолио",
+
+    "project.view_mode": "Режим просмотра",
+    "project.about": "О проекте",
+    "project.share": "Поделиться проектом:",
+    "project.contact_us": "Что бы заказать сайт - позвоните нам по телефону: +7 (8332) 411-451 \u2028или оставьте заявку",
+    "project.send_order": "Оставить заявку"
 }

@@ -4,6 +4,8 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PromotionsController;
 use App\Http\Controllers\ReviewsController;
+use App\Models\Project\Project;
+use App\Models\Project\ProjectCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +22,19 @@ use Illuminate\Support\Facades\Route;
 Route::get( '/', [ HomeController::class, 'index' ] )->name( 'home' );
 Route::get( '/reviews', [ ReviewsController::class, 'index' ] )->name( 'reviews' );
 Route::get( '/promotions', [ PromotionsController::class, 'index' ] )->name( 'promotions' );
-Route::get( '/projects', [ ProjectsController::class, 'index' ] )->name( 'projects' );
+
+// Projects
+Route::controller( ProjectsController::class )->group( function () {
+    Route::get( '/projects', 'index' )
+        ->name( 'projects' );
+
+    Route::get( '/projects/{project_category:slug}', 'category' )
+        ->name( 'projects.category' )
+        ->fallback();
+
+    Route::get( '/project/{project:slug}', 'single' )
+        ->name( 'project' )
+        ->fallback();
+} );
+
+

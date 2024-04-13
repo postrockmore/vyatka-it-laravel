@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->boolean('published')->default(false);
             $table->timestamp('deleted_at')->nullable();
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }

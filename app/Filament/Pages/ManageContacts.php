@@ -57,11 +57,4 @@ class ManageContacts extends SettingsPage
                 ])->columns(6)
             ]);
     }
-
-    public function mutateFormDataBeforeSave($data) : array
-    {
-        Cache::set('contacts', $data);
-
-        return  $data;
-    }
 }

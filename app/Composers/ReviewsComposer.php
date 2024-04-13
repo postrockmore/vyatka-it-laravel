@@ -16,7 +16,9 @@ class ReviewsComposer
 
     public function compose(View $view): void
     {
-        $reviews = $this->vk->get();
+        $reviews = cache()->remember('reviews_composer', 3600, function () {
+            return $this->vk->get();
+        });
 
         $view->with('reviews', $reviews);
     }

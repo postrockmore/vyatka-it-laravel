@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use CmsMulti\FilamentClearCache\FilamentClearCachePlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -28,8 +29,10 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                //'primary' => Color::Amber,
+                'primary' => '#129FEE',
             ])
+            ->brandLogo(fn () => view('filament.admin.logo'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -53,6 +56,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                FilamentClearCachePlugin::make(),
             ]);
     }
 }

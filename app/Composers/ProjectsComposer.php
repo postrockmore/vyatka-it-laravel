@@ -2,12 +2,11 @@
 
 namespace App\Composers;
 
-use App\Models\Project;
+use App\Models\Project\Project;
 use Illuminate\View\View;
 
 class ProjectsComposer
 {
-    protected VK $vk;
 
     public function __construct()
     {
@@ -16,7 +15,9 @@ class ProjectsComposer
 
     public function compose(View $view): void
     {
-        $projects = Project::query()->get();
+        $projects = cache()->remember('projects_composer', 3600, function () {
+            return Project::query()->get();
+        });
 
         $view->with('projects', $projects);
     }

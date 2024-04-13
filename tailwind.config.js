@@ -36,6 +36,7 @@ export default {
             },
             fontSize: {
                 'xxs': ['0.6875rem', '0.6875rem'],
+                '2/5xl': ['1.75rem', '2rem'],
                 '5xl': ['3rem', '3.25rem'],
                 '6xl': ['3.5rem', '4rem'],
                 '7xl': ['4.5rem', '4.5rem'],

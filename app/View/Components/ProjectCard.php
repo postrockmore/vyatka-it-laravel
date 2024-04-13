@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\Project;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -12,7 +11,8 @@ class ProjectCard extends Component
 
     public function __construct(
         public string $title,
-        public string $thumbnail
+        public string $thumbnail,
+        public string $link,
     )
     {
 

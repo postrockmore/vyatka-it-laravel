@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\OrderingScope;
+use App\Models\Scopes\PublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[ScopedBy([PublishedScope::class, OrderingScope::class])]
 class Promotion extends Model
 {
     use HasFactory;
@@ -13,10 +17,11 @@ class Promotion extends Model
     protected $fillable = [
         'title',
         'thumbnail',
-        'published'
+        'published',
+        'order'
     ];
 
-    protected function thumbnail(): Attribute
+    protected function image(): Attribute
     {
         return Attribute::make(
             get: fn () => asset('storage/' . $this->attributes['thumbnail']),

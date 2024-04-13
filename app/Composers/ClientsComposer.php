@@ -10,13 +10,13 @@ use Illuminate\View\View;
 
 class ClientsComposer
 {
-    public function compose(View $view): void
+    public function compose( View $view ): void
     {
-        $clients = cache()->rememberForever('clients', function () {
+        $clients = cache()->rememberForever( 'clients', function () {
             return Client::query()->get();
-        });
+        } );
 
         $view
-            ->with('clients', $clients);
+            ->with( 'clients', $clients );
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('thumbnail');
             $table->boolean('published')->default(false);
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }

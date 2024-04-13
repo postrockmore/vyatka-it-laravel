@@ -1,0 +1,10 @@
+.emoji {
+    @apply w-6 h-6;
+    background-size: contain;
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+
+    &--work {
+        background-image: url(../images/emoji/work.png);
+    }
+}

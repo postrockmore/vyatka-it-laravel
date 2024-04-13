@@ -51,11 +51,4 @@ class ManageMenu extends SettingsPage
                     ->addActionLabel('+')
             ]);
     }
-
-    public function mutateFormDataBeforeSave($data) : array
-    {
-        Cache::set('menu', $data);
-
-        return  $data;
-    }
 }

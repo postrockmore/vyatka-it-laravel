@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PromotionResource\Pages;
 use App\Filament\Resources\PromotionResource\RelationManagers;
 use App\Models\Promotion;
+use App\Traits\Filament\Resources\HasWithoutGlobladScopes;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
@@ -22,9 +23,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PromotionResource extends Resource
 {
+    use HasWithoutGlobladScopes;
+
     protected static ?string $model = Promotion::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-receipt-percent';
 
     protected static ?string $label = 'Акция';
     protected static ?string $navigationLabel = 'Акции';
@@ -39,9 +42,14 @@ class PromotionResource extends Resource
                         TextInput::make('title')
                             ->label('Название'),
                     ])->columnSpan(2),
-                    Section::make()->schema([
-                        Toggle::make('published')
-                            ->label('Опубликован'),
+                    Forms\Components\Group::make()->schema([
+                        Section::make()->schema([
+                            Toggle::make('published')
+                                ->label('Опубликован'),
+                            TextInput::make('order')
+                                ->numeric()
+                                ->label('Порядок'),
+                        ]),
                         FileUpload::make('thumbnail')
                             ->label('Изображение')
                             ->image(),
@@ -71,7 +79,9 @@ class PromotionResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('order')
+            ->reorderable('order');;
     }
 
     public static function getRelations(): array
