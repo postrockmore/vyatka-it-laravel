@@ -19,23 +19,33 @@
                         </div>
 
                         @if ($projects->isNotEmpty())
-                            <div class="grid grid-cols-1/1 tablet:grid-cols-2 desktop:grid-cols-6 gap-5 desktop:gap-8 mt-6 desktop:mt-14">
+                            <div class="grid grid-cols-2 desktop:grid-cols-6 gap-5 desktop:gap-8 mt-5 desktop:mt-14">
                                 @foreach($projects as $project)
                                     @if(in_array($loop->iteration, [1, 2]))
-                                        <div class="desktop:col-span-3">
+                                        <div class="col-span-2 desktop:col-span-3">
                                             <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
                                         </div>
                                     @else
-                                        <div class="desktop:col-span-2">
+                                        <div class="col-span-1 desktop:col-span-2">
                                             <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
                                         </div>
                                     @endif
                                 @endforeach
                             </div>
 
-                            <div class="flex items-center justify-between">
+                            @if ($projects->hasPages())
+                                <div class="flex items-center justify-between mt-18">
+                                    <div class="flex">
+                                        {{ $projects->links() }}
+                                    </div>
 
-                            </div>
+                                    @if ($projects->hasMorePages())
+                                        <div class="flex">
+                                            <a href="{{ $projects->nextPageUrl() }}" class="btn btn--second">Следующая →</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
                         @else
                             <p class="desktop:mt-14">Данный раздел пуст</p>
                         @endif

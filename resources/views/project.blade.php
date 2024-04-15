@@ -9,7 +9,7 @@
                 <div class="flex flex-col">
                     <h1 class="title title-h2">{{ $project->title }}</h1>
 
-                    <div class="flex gap-x-16 mt-10">
+                    <div class="flex flex-col-reverse desktop:flex-row gap-y-5 gap-x-16 mt-3 desktop:mt-10">
                         <div class="flex project-textbox w-full">
                             {!! $project->content !!}
                         </div>

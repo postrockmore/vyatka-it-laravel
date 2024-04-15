@@ -1,13 +1,13 @@
 <section class="py-section bg-bg-second">
     <div class="container">
         <div class="flex flex-col py-section">
-            <h2 class="title title-h2">Наши достижения в 2024</h2>
-            <p class="mt-6">Мы активно участвуем в Рейтинге Рунета, который регулярно публикует оценки и ранжирование веб-студий, SEO-компаний и digital-агентств, действующих в Рунете. В этом конкурсе принимает участие более 2000 компаний, и результаты определяются на основе сравнения множества факторов. Участие в этом рейтинге позволяет нам ежегодно оценивать нашу работу во всей стране и устанавливать новые цели.</p>
-            
+            <h2 class="title title-h2">{{ __('achievements.title') }}</h2>
+            <p class="mt-6">{{ __('achievements.description') }}</p>
+
             <div class="grid grid-cols-1/1 tablet:grid-cols-3 desktop:grid-cols-5 mt-6 desktop:mt-16 gap-6">
                 <x-achievement-card
                         image="{{ Vite::image('achievements/achievement-1.jpg') }}"
-                        text="ТОП 3 в среди всех веб-студий города Киров"
+                        text="{{ __('achievements.bulit1') }}"
                 >
                     <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_2437_17222)">
@@ -48,7 +48,7 @@
                 </x-achievement-card>
                 <x-achievement-card
                         image="{{ Vite::image('achievements/achievement-2.jpg') }}"
-                        text="ТОП 1  по разработке интернет-магазинов в сегменте до 500 тысяч рублей в Кирове"
+                        text="{{ __('achievements.bulit2') }}"
                 >
                     <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_2464_11578)">
@@ -89,7 +89,7 @@
                 </x-achievement-card>
                 <x-achievement-card
                         image="{{ Vite::image('achievements/achievement-3.jpg') }}"
-                        text="ТОП 2 среди разработчиков сайтов для госструктур в Кирове"
+                        text="{{ __('achievements.bulit3') }}"
                 >
                     <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_2464_11665)">
@@ -130,7 +130,7 @@
                 </x-achievement-card>
                 <x-achievement-card
                         image="{{ Vite::image('achievements/achievement-4.jpg') }}"
-                        text="ТОП 3 в рейтинге разработчиков продуктовых интернет-магазинов в сегменте до 500 тысяч рублей по России."
+                        text="{{ __('achievements.bulit4') }}"
                 >
                     <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_2464_11629)">
@@ -171,7 +171,7 @@
                 </x-achievement-card>
                 <x-achievement-card
                         image="{{ Vite::image('achievements/achievement-5.jpg') }}"
-                        text="41 место в рейтинге разработчиков на WordPress и 6 по разработке на OpenCart по России"
+                        text="{{ __('achievements.bulit5') }}"
                 >
                     <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_2464_11775)">

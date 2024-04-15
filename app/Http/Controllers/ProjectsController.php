@@ -11,7 +11,7 @@ class ProjectsController extends Controller
     public function index(): View
     {
         $categories = ProjectCategory::query()->get();
-        $projects = Project::query()->get();
+        $projects = Project::query()->paginate(8);
 
         return view('projects', [
             'categories' => $categories,
@@ -22,7 +22,7 @@ class ProjectsController extends Controller
     public function category(ProjectCategory $project_category): View
     {
         $categories = ProjectCategory::query()->get();
-        $projects = $project_category->projects()->get();
+        $projects = $project_category->projects()->paginate(8);
 
         return view('projects', [
             'current_category' => $project_category,

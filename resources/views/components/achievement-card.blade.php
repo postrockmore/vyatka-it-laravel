@@ -5,7 +5,7 @@
                 {{ $slot }}
             </div>
             <p class="text-center mt-2 mb-4">{{ $text }}</p>
-            <span class="mt-auto text-caption">Рейтинг Рунета-2023</span>
+            <span class="mt-auto text-caption">{{ __('achievements.bulit_footer') }}2023</span>
         </div>
         <div class="achievement-card-back rounded-xl overflow-hidden">
             <img src="{{ $image }}" alt="{{ $text }}">

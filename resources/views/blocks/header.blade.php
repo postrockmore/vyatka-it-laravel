@@ -131,7 +131,10 @@
                         <span>Интеграции</span>
                     </a>
                 </nav>
-                <button class="hidden desktop:flex btn btn--accent-smooth py-3 px-4">{{ __('header.action_button') }}</button>
+                <button class="hidden desktop:flex btn btn--accent-smooth py-3 px-4">
+                    {{ __('header.action_button') }}
+                    <span class="emoji emoji--medium emoji--work"></span>
+                </button>
             </div>
         </div>
     </div>

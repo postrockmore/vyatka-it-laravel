@@ -4,7 +4,21 @@
     background-size: 1.5rem;
     background-repeat: no-repeat;
 
+    &--small {
+        @apply w-4 h-4;
+        background-size: 1rem;
+    }
+
+    &--medium {
+        @apply w-5 h-5;
+        background-size: 1.25rem;
+    }
+
     &--work {
         background-image: url(../images/emoji/work.png);
+    }
+
+    &--ghost {
+        background-image: url(../images/emoji/ghost.png);
     }
 }
