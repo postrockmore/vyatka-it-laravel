@@ -18,11 +18,11 @@
                             </div>
                         @endforeach
                     </div>
-                    
+
                     <div class="hidden desktop:block reviews-gradient absolute bottom-0 left-0 w-full h-[200px]"></div>
                 </div>
-                
-                <a class="btn btn--light mt-6 desktop:mt-0" href="#">Смотреть все отзывы →</a>
+
+                <a class="button button--light mt-6 desktop:mt-0" href="#">Смотреть все отзывы →</a>
             </div>
         </div>
     </div>

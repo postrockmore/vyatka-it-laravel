@@ -12,7 +12,7 @@ class PromotionsController extends Controller
     public function index (): View
     {
         $promotions = cache()->rememberForever('promotions', function () {
-            return Promotion::query()->get();
+            return Promotion::query()->with('media')->get();
         });
 
         return view('promotions', [

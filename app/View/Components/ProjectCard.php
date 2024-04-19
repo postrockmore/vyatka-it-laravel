@@ -11,11 +11,11 @@ class ProjectCard extends Component
 
     public function __construct(
         public string $title,
-        public string $thumbnail,
         public string $link,
+        public string $thumbnail = '',
+        public string $thumbnailWebp = '',
     )
     {
-
     }
 
     public function render(): View|Closure|string

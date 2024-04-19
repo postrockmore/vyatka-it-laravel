@@ -7,7 +7,10 @@
                     <div class="swiper-wrapper">
                         @foreach($clients as $client)
                             <div class="flex grayscale hover:grayscale-0 transition-all">
-                                <img src="{{ $client['icon'] }}" alt="{{ $client['title'] }}">
+                                <picture>
+                                    <source srcset="{{ $client->thumbnail_webp }}">
+                                    <img src="{{ $client->thumbnail }}" alt="{{ $client->title }}">
+                                </picture>
                             </div>
                         @endforeach
                     </div>

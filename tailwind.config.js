@@ -122,6 +122,7 @@ export default {
         'desktop:col-span-2',
         'desktop:col-span-3',
         'desktop:col-span-4',
+        'group-hover:fill-link',
         {
             pattern: /col-span-|radio-variation/,
         },

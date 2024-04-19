@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('thumbnail');
             $table->boolean('published')->default(false);
             $table->integer('order')->default(0);
             $table->timestamps();

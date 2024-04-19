@@ -23,11 +23,21 @@
                                 @foreach($projects as $project)
                                     @if(in_array($loop->iteration, [1, 2]))
                                         <div class="col-span-2 desktop:col-span-3">
-                                            <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
+                                            <x-project-card :title="$project->title"
+                                                            :thumbnail="$project->thumbnail"
+                                                            :thumbnailWebp="$project->thumbnailWebp"
+                                                            :link="route('project', $project)"
+                                            >
+                                            </x-project-card>
                                         </div>
                                     @else
                                         <div class="col-span-1 desktop:col-span-2">
-                                            <x-project-card :title="$project['title']" :thumbnail="$project['image']" :link="route('project', $project)"></x-project-card>
+                                            <x-project-card :title="$project->title"
+                                                            :thumbnail="$project->thumbnail"
+                                                            :thumbnailWebp="$project->thumbnailWebp"
+                                                            :link="route('project', $project)"
+                                            >
+                                            </x-project-card>
                                         </div>
                                     @endif
                                 @endforeach
@@ -41,7 +51,7 @@
 
                                     @if ($projects->hasMorePages())
                                         <div class="flex">
-                                            <a href="{{ $projects->nextPageUrl() }}" class="btn btn--second">Следующая →</a>
+                                            <a href="{{ $projects->nextPageUrl() }}" class="button button--second">Следующая →</a>
                                         </div>
                                     @endif
                                 </div>

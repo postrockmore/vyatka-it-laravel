@@ -12,7 +12,10 @@
                     <div class="grid grid-cols-1/1 tablet:grid-cols-2 gap-8 mt-10">
                         @foreach($promotions as $promotion)
                             <button class="flex rounded-xl overflow-hidden">
-                                <img src="{{ $promotion['image'] }}" alt="{{ $promotion['title'] }}">
+                                <picture>
+                                    <source srcset="{{ $promotion->thumbnail_webp }}">
+                                    <img src="{{ $promotion->thumbnail }}" alt="{{ $promotion['title'] }}">
+                                </picture>
                             </button>
                         @endforeach
                     </div>

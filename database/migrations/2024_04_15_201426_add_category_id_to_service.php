@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promotions', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->boolean('published')->default(false);
-            $table->integer('order')->default(0);
-            $table->timestamps();
+        Schema::table('services', function (Blueprint $table) {
+            $table->integer('category_id')->nullable();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promotions');
+        Schema::table('services', function (Blueprint $table) {
+            $table->dropColumn('category_id');
+        });
     }
 };

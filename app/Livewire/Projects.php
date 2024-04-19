@@ -11,48 +11,53 @@ class Projects extends Component
 {
     use WithPagination;
 
-    public ProjectCategory $project_category;
-    public bool $project_category_selected = false;
+    public ProjectCategory $category;
+    public bool $category_selected = false;
     public int $page = 1;
-    private int $per_page = 9;
+    private int $per_page = 8;
 
     public function showAll()
     {
-        $this->project_category_selected = false;
-        $this->page = 1;
+        $this->reset($this->category);
+        $this->category_selected = false;
+        $this->pageReset();
     }
 
-    public function setCategory($category_id)
+    public function showCategory($category_id)
     {
-        $this->project_category = ProjectCategory::find($category_id);
-
-        if ($this->project_category) {
-            $this->project_category_selected = true;
-        }
-
-        $this->page = 1;
+        $this->category = ProjectCategory::find($category_id);
+        $this->category_selected = true;
+        $this->pageReset();
     }
 
-    public function next()
+    public function loadmore()
     {
         $this->page += 1;
     }
 
+    private function pageReset()
+    {
+        $this->page = 1;
+    }
+
     public function render()
     {
-        $categories = ProjectCategory::query()->get();
+        $categories = cache()->remember('project_categories', now()->addDay(), function () {
+            return ProjectCategory::query()->get();
+        });
 
-        if ($this->project_category_selected) {
-            $projects = $this->project_category
-                    ->projects()
-                    ->paginate($this->per_page * $this->page);
+        if ($this->category_selected) {
+            $projects_builder = $this->category->projects();
         } else {
-            $projects = Project::query()
-                    ->paginate($this->per_page * $this->page);
+            $projects_builder = Project::query();
         }
 
+        $projects = $projects_builder->with('media')->paginate($this->per_page * $this->page);
+
         return view('livewire.projects', [
-            'category_id' => $this->project_category_selected && isset($this->project_category) ? $this->project_category->id : false,
+            'category_id' => $this->category_selected && !empty($this->category)
+                ? $this->category->id
+                : false,
             'categories' => $categories,
             'projects' => $projects
         ]);

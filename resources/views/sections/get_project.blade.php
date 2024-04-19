@@ -11,20 +11,20 @@
                     <x-ui.radio name="project_type" label="Веб-сервис"></x-ui.radio>
                     <x-ui.radio name="project_type" label="Доработка"></x-ui.radio>
                 </div>
-                
+
                 <div class="grid tablet:grid-cols-2 gap-3 tablet:gap-8 mt-6 tablet:mt-8">
                     <div class="tablet:col-span-2 flex flex-col gap-3 tablet:gap-8">
                         <x-ui.input name="about" placeholder="Немного о проекте и примерный бюджет"></x-ui.input>
                         <x-ui.input name="email" placeholder="E-Mail"></x-ui.input>
                     </div>
-                    
+
                     <x-ui.input type="tel" name="phone" placeholder="Телефон"></x-ui.input>
                     <x-ui.input name="name" placeholder="Имя"></x-ui.input>
                 </div>
-                
+
                 <div class="flex flex-col tablet:flex-row items-start tablet:items-center gap-2 tablet:gap-6 mt-6 tablet:mt-14">
-                    <button type="submit" class="btn btn--accent w-full tablet:w-auto">Отправить заявку</button>
-                    
+                    <button type="submit" class="button button--accent w-full tablet:w-auto">Отправить заявку</button>
+
                     <div class="max-w-[283px] text-disable-dark">
                         @include('blocks.term')
                     </div>

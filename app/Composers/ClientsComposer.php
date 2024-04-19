@@ -13,7 +13,7 @@ class ClientsComposer
     public function compose( View $view ): void
     {
         $clients = cache()->rememberForever( 'clients', function () {
-            return Client::query()->get();
+            return Client::query()->with('media')->get();
         } );
 
         $view

@@ -1,6 +1,6 @@
 @layer components {
     // Buttons
-    .btn {
+    .button {
         @apply py-4 px-4 flex items-center justify-center gap-2.5 rounded-xl transition-all;
 
         &--accent-smooth {

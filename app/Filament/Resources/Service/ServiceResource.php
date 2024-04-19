@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Service;
 
-use App\Filament\Resources\ServiceResource\Pages;
-use App\Filament\Resources\ServiceResource\RelationManagers;
-use App\Models\Service;
+use App\Filament\Resources\Service\ServiceResource\Pages;
+use App\Filament\Resources\Service\ServiceResource\RelationManagers;
+use App\Models\Service\Service;
+use App\Models\Service\ServiceCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -51,8 +52,16 @@ class ServiceResource extends Resource
                                 ->numeric()
                                 ->label('Порядок'),
                         ]),
-                        Forms\Components\FileUpload::make('thumbnail')
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
+                            ->collection('thumbnails')
                             ->label('Изображение')
+                            ->image(),
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'title')
+                            ->options(ServiceCategory::all()->pluck('title', 'id'))
+                            ->label('Категория')
+                            ->native(false)
+                            ->preload(),
                     ])->columnSpan(1)
                 ])->columns(3)
             ]);
@@ -68,23 +77,18 @@ class ServiceResource extends Resource
                     ->label('Активность')
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make(),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ForceDeleteAction::make(),
-                Tables\Actions\RestoreAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ])
             ->defaultSort('order')
-            ->reorderable('order');;
+            ->reorderable('order');
     }
 
     public static function getRelations(): array

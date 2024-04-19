@@ -2,6 +2,7 @@
 
 namespace App\Composers;
 
+use App\Models\Service\ServiceCategory;
 use App\Services\VK;
 use App\Settings\ContactsSettings;
 use App\Settings\HeaderMenuSettings;
@@ -31,8 +32,17 @@ class HeaderComposer
 
         $header_links = $menu->header_links;
 
+        $service_categories = cache()->remember('service_categories', 3600, function () {
+            return ServiceCategory::query()
+                ->where('parent_id', null)
+                ->with('childrens')
+                ->with('media')
+                ->get();
+        });
+
         $view
             ->with('links', $header_links)
-            ->with('contacts', $contacts);
+            ->with('contacts', $contacts)
+            ->with('service_categories', $service_categories);
     }
 }

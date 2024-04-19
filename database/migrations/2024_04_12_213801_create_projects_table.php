@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('excerpt')->nullable();
             $table->text('content')->nullable();
             $table->string('url')->nullable();
-            $table->string('thumbnail');
             $table->boolean('published')->default(false);
             $table->integer('order')->default(0);
             $table->timestamps();

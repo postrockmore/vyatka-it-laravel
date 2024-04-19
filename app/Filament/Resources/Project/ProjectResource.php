@@ -66,18 +66,17 @@ class ProjectResource extends Resource
                                 ->label('Порядок'),
                         ] ),
 
-                        FileUpload::make( 'thumbnail' )
-                            ->label( 'Изображение' )
-                            ->image()
-                            ->required(),
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
+                            ->collection('thumbnails')
+                            ->label('Изображение')
+                            ->image(),
 
                         Section::make()->schema( [
                             Forms\Components\Select::make('categories')
                                 ->relationship('categories', 'title')
-                                ->native(false)
+                                ->label('Категории')
                                 ->multiple()
                                 ->preload()
-                                ->label('Категории')
                                 ->required()
                         ])
                     ])
@@ -132,5 +131,10 @@ class ProjectResource extends Resource
             'create' => Pages\CreateProject::route('/create'),
             'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('published', true)->count();
     }
 }

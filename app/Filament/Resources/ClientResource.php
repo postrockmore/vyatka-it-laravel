@@ -14,6 +14,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
@@ -31,6 +32,9 @@ class ClientResource extends Resource
     protected static ?string $label = 'Клиент';
     protected static ?string $navigationLabel = 'Клиенты';
     protected static ?string $pluralLabel = 'Клиенты';
+    protected static ?string $navigationGroup = 'Информация';
+
+    protected static ?int $navigationSort = 50;
 
     public static function form(Form $form): Form
     {
@@ -49,7 +53,8 @@ class ClientResource extends Resource
                                 ->numeric()
                                 ->label('Порядок'),
                         ]),
-                        FileUpload::make('thumbnail')
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
+                            ->collection('thumbnails')
                             ->label('Изображение')
                             ->image(),
                     ])->columnSpan(1)
@@ -61,8 +66,8 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('thumbnail')
-                    ->label('Изображение'),
+                SpatieMediaLibraryImageColumn::make('thumbnail')
+                    ->collection('thumbnails'),
                 TextColumn::make('title')
                     ->label('Название'),
                 ToggleColumn::make('published')
@@ -98,5 +103,4 @@ class ClientResource extends Resource
             'edit' => Pages\EditClient::route('/{record}/edit'),
         ];
     }
-
 }

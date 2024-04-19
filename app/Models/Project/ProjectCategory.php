@@ -21,7 +21,7 @@ class ProjectCategory extends Model
         'title',
         'published',
         'slug',
-        'order'
+        'order',
     ];
 
     public function projects()

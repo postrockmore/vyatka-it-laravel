@@ -39,6 +39,10 @@
 
     svg {
       @apply fill-main;
+
+      path {
+        @apply fill-main;
+      }
     }
   }
 }

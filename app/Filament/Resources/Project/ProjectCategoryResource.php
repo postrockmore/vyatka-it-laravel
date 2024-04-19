@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Project;
 
 use App\Filament\Resources\Project\ProjectCategoryResource\Pages;
 use App\Filament\Resources\Project\ProjectCategoryResource\RelationManagers;
+use App\Filament\Resources\ProjectCategoryResource\RelationManagers\ProjectsRelationManager;
 use App\Models\Project\ProjectCategory;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
@@ -25,8 +26,8 @@ class ProjectCategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
 
     protected static ?string $label = 'Категория';
-    protected static ?string $navigationLabel = 'Категории проектов';
-    protected static ?string $pluralLabel = 'Категории проектов';
+    protected static ?string $navigationLabel = 'Категории';
+    protected static ?string $pluralLabel = 'Категории';
     protected static ?string $navigationGroup = 'Проекты';
     protected static ?int $navigationSort = 301;
 
@@ -81,7 +82,7 @@ class ProjectCategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProjectsRelationManager::class
         ];
     }
 
