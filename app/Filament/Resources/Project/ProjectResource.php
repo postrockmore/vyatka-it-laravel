@@ -61,9 +61,6 @@ class ProjectResource extends Resource
                         Section::make()->schema( [
                             Toggle::make( 'published' )
                                 ->label( 'Опубликован' ),
-                            TextInput::make('order')
-                                ->numeric()
-                                ->label('Порядок'),
                         ] ),
 
                         Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')

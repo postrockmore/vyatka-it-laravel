@@ -9,12 +9,16 @@ use Illuminate\View\Component;
 class ServiceCard extends Component
 {
     public function __construct(
-        public int $columns = 2,
+        public string $class = '',
         public string $background = '',
-        public string $name = '',
-        public string $description = ''
+        public string $title = '',
+        public string $description = '',
+        public string $deadlines = '',
+        public string $price = '',
+        public string $link = ''
     )
     {
+        //
     }
 
     public function render(): View|Closure|string

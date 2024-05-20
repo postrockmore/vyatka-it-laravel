@@ -32,7 +32,7 @@ class ClientResource extends Resource
     protected static ?string $label = 'Клиент';
     protected static ?string $navigationLabel = 'Клиенты';
     protected static ?string $pluralLabel = 'Клиенты';
-    protected static ?string $navigationGroup = 'Информация';
+    protected static ?string $navigationGroup = 'Контент';
 
     protected static ?int $navigationSort = 50;
 
@@ -49,9 +49,6 @@ class ClientResource extends Resource
                         Section::make()->schema([
                             Toggle::make('published')
                                 ->label('Опубликован'),
-                            TextInput::make('order')
-                                ->numeric()
-                                ->label('Порядок'),
                         ]),
                         Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
                             ->collection('thumbnails')
@@ -67,7 +64,8 @@ class ClientResource extends Resource
         return $table
             ->columns([
                 SpatieMediaLibraryImageColumn::make('thumbnail')
-                    ->collection('thumbnails'),
+                    ->collection('thumbnails')
+                    ->label('Изображение'),
                 TextColumn::make('title')
                     ->label('Название'),
                 ToggleColumn::make('published')
@@ -85,7 +83,7 @@ class ClientResource extends Resource
                 ]),
             ])
             ->defaultSort('order')
-            ->reorderable('order');;
+            ->reorderable('order');
     }
 
     public static function getRelations(): array

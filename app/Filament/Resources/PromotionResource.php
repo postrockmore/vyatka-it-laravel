@@ -34,7 +34,7 @@ class PromotionResource extends Resource
     protected static ?string $navigationLabel = 'Акции';
     protected static ?string $pluralLabel = 'Акции';
 
-    protected static ?string $navigationGroup = 'Информация';
+    protected static ?string $navigationGroup = 'Контент';
 
     protected static ?int $navigationSort = 51;
 
@@ -51,9 +51,6 @@ class PromotionResource extends Resource
                         Section::make()->schema([
                             Toggle::make('published')
                                 ->label('Опубликован'),
-                            TextInput::make('order')
-                                ->numeric()
-                                ->label('Порядок'),
                         ]),
                         Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
                             ->collection('thumbnails')
@@ -69,7 +66,8 @@ class PromotionResource extends Resource
         return $table
             ->columns([
                 SpatieMediaLibraryImageColumn::make('thumbnail')
-                    ->collection('thumbnails'),
+                    ->collection('thumbnails')
+                    ->label('Изображение'),
                 TextColumn::make('title')
                     ->label('Название'),
                 ToggleColumn::make('published')

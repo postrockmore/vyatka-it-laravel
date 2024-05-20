@@ -88,7 +88,7 @@
                 <nav class="w-full desktop:w-auto flex items-center gap-6 text-main-dark overflow-x-auto desktop:overflow-visible">
                     @foreach($service_categories as $category)
                         <div class="relative group">
-                            <a href="#" class="flex items-center gap-2 text-nowrap group-hover:text-link transition-colors">
+                            <a href="{{ route('services.category', $category) }}" class="flex items-center gap-2 text-nowrap group-hover:text-link transition-colors">
                                 <div class="w-4 h-4 fill-main-dark group-hover:fill-link">
                                     {!! $category->icon !!}
                                 </div>

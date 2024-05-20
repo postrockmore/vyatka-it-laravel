@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->char('title', 255);
             $table->char('slug', 255);
-            $table->string('content')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('published')->default(false);
             $table->timestamp('deleted_at')->nullable();
             $table->integer('order')->default(0);

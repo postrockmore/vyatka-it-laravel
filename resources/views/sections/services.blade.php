@@ -1,4 +1,4 @@
-<section class="my-section">
+<section class="py-section">
     <div class="container">
         <div class="flex flex-col">
             <h2 class="title title-h2">

@@ -9,6 +9,8 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -51,25 +53,24 @@ class ServiceCategoryResource extends Resource
                         Section::make()->schema([
                             Forms\Components\Toggle::make('published')
                                 ->label('Опубликовано'),
-                            TextInput::make('order')
-                                ->numeric()
-                                ->default(0)
-                                ->label('Порядок'),
                         ]),
-                        Forms\Components\Grid::make()->schema([
-                            SpatieMediaLibraryFileUpload::make('icon')
-                                ->collection('icon')
-                                ->label('Иконка')
-                                ->image(),
-                            SpatieMediaLibraryFileUpload::make('icon_alt')
-                                ->collection('icon_alt')
-                                ->label('Иконка (Альтернативная)')
-                                ->image(),
-                        ])->columns(2),
+                        Tabs::make()->tabs([
+                            Tab::make('Иконка')->schema([
+                                SpatieMediaLibraryFileUpload::make('icon')
+                                    ->collection('icon')
+                                    ->hiddenLabel()
+                                    ->image(),
+                            ]),
+                            Tab::make('Иконка (Альтернативная)')->schema([
+                                SpatieMediaLibraryFileUpload::make('icon_alt')
+                                    ->collection('icon_alt')
+                                    ->hiddenLabel()
+                                    ->image(),
+                            ])
+                        ]),
                         SpatieMediaLibraryFileUpload::make('thumbnail')
                             ->collection('thumbnails')
                             ->label('Изображение'),
-
                         Section::make()->schema([
                             Forms\Components\Select::make('parent_id')
                                 ->label('Родительская категория')

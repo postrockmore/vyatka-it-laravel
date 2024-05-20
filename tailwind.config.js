@@ -33,6 +33,7 @@ export default {
             animation: {
                 'spin-slow': 'spin 5s linear infinite',
                 'spin-slow-reverse': 'spin 5s linear infinite reverse',
+                'levitation': 'levitation 3s ease-in-out infinite'
             },
             fontSize: {
                 'xxs': ['0.6875rem', '0.6875rem'],
@@ -109,6 +110,7 @@ export default {
                 'border-main-dark': 'rgba(255, 255, 255, 0.08)',
                 'border-light': 'rgba(0, 0, 0, 0.07)',
                 'border-link': '#3d8cd63d',
+                'border-link-dark': '#72bbff7a',
                 'border-controls': 'rgba(0, 0, 0, 0.16)',
                 'border-controls-dark': 'rgba(255, 255, 255, 0.16)',
             }

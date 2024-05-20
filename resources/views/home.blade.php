@@ -13,7 +13,11 @@
     @include('sections.achievements')
     @include('sections.projects')
     @include('sections.services')
-    @include('sections.stages')
+
+    <div class="my-section">
+        @include('sections.stages')
+    </div>
+
     @include('sections.reviews')
     @include('sections.clients')
     @include('sections.partner_services')

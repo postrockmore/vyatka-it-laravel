@@ -1,11 +1,11 @@
-<section class="my-section py-section bg-bg-main-dark overflow-hidden">
+<section class="py-section bg-bg-main-dark overflow-hidden">
     <div class="container">
         <div class="flex flex-col py-section" data-stages>
             <h2 class="title title-h2 text-main-dark">Этапы работы над проектом</h2>
             <p class="max-w-[600px] text-body-dark mt-3 desktop:mt-6">
                 Каждый проект для нас как родной. Мы любим свою работу и с трепетом относимся к каждому клиенту. Предварительные выводы неутешительны: понимание сути ресурсосберегающих.
             </p>
-            
+
             <div class="swiper w-full mt-6 desktop:mt-[176px] overflow-visible">
                 <div class="swiper-wrapper">
                     <x-stage-card num="1" title="Первичное обращение" description="Чтобы воспользоваться нашими услугами, оставьте заявку на сайте, позвоните на телефон или воспользуйтесь одним из удобных для вас мессенджеров"></x-stage-card>

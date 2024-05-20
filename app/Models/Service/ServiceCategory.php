@@ -2,7 +2,10 @@
 
 namespace App\Models\Service;
 
+use App\Models\Scopes\OrderingScope;
+use App\Models\Scopes\PublishedScope;
 use App\Traits\Models\HasSlugOptions;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +16,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
 
+#[ScopedBy([PublishedScope::class, OrderingScope::class])]
 class ServiceCategory extends Model implements HasMedia
 {
     use HasFactory;
@@ -49,14 +53,18 @@ class ServiceCategory extends Model implements HasMedia
     public function icon(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => file_get_contents($this->getFirstMediaPath('icon')),
+            get: fn($value) => $this->getFirstMediaPath('icon')
+                ? file_get_contents($this->getFirstMediaPath('icon'))
+                : null
         );
     }
 
     public function iconAlt(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => file_get_contents($this->getFirstMediaPath('icon_alt')),
+            get: fn($value) => $this->getFirstMediaPath('icon_alt')
+                ? file_get_contents($this->getFirstMediaPath('icon_alt'))
+                : null
         );
     }
 }
